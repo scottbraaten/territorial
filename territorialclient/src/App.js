@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import {
+  action as loginAction,
+  loader as loginLoader,
+} from "./pages/LoginPage";
+
+import HomePage from "./pages/HomePage";
+import SubmitLayout from "./pages/SubmitLayout";
+import SubmitPage from "./pages/SubmitPage";
+import LoginPage from "./pages/LoginPage";
+import CustomersPage from "./pages/CustomersPage";
+import CustomerOrderPage from "./pages/CustomerOrderPage";
+import RootLayout from "./pages/RootLayout";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "submit",
+          element: <SubmitLayout />,
+          children: [
+            {
+              path: "",
+              element: <SubmitPage />,
+            },
+            {
+              path: "login",
+              element: <LoginPage />,
+            },
+          ],
+        },
+        {
+          path: "customers",
+          children: [
+            {
+              index: true,
+              element: <CustomersPage />,
+            },
+            {
+              path: ":id",
+              id: "customer-id",
+              element: <CustomerOrderPage />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
