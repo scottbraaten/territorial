@@ -11,16 +11,13 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // verify login info here
-    dispatch(authActions.login());
+    // dispatch(authActions.login());
     navigate("..");
   };
 
   return (
     <>
-      <Form
-        onSubmit={handleSubmit}
-        method="GET"
-      >
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
           id="name"
@@ -36,7 +33,7 @@ const LoginPage = () => {
           required
         />
         <Button>Login</Button>
-      </Form>
+      </form> */}
     </>
   );
 };

@@ -1,10 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import {
-  action as loginAction,
-  loader as loginLoader,
-} from "./pages/LoginPage";
-
 import HomePage from "./pages/HomePage";
 import SubmitLayout from "./pages/SubmitLayout";
 import SubmitPage from "./pages/SubmitPage";
